@@ -107,11 +107,12 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _styles_resets_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles/resets.scss */ "./src/client/styles/resets.scss");
 /* harmony import */ var _styles_base_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles/base.scss */ "./src/client/styles/base.scss");
-/* harmony import */ var _styles_footer_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styles/footer.scss */ "./src/client/styles/footer.scss");
-/* harmony import */ var _styles_form_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styles/form.scss */ "./src/client/styles/form.scss");
-/* harmony import */ var _styles_header_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./styles/header.scss */ "./src/client/styles/header.scss");
-/* harmony import */ var _styles_fonts_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./styles/fonts.scss */ "./src/client/styles/fonts.scss");
-
+/* harmony import */ var _styles_base_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_styles_base_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _styles_form_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styles/form.scss */ "./src/client/styles/form.scss");
+/* harmony import */ var _styles_form_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_styles_form_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _styles_variables_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styles/variables.scss */ "./src/client/styles/variables.scss");
+/* harmony import */ var _styles_fonts_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./styles/fonts.scss */ "./src/client/styles/fonts.scss");
+/* harmony import */ var _styles_fonts_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_styles_fonts_scss__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -146,7 +147,7 @@ function handleSubmit(event) {
     document.getElementById('coming').classList.remove('hide');
     document.getElementById('data-list').classList.add('hide'); // Fetch request
 
-    fetch('http://localhost:8081/getSentiment', {
+    fetch('http://localhost:9090/getSentiment', {
       method: 'POST',
       cache: "no-cache",
       credentials: 'same-origin',
@@ -259,13 +260,10 @@ const rankScore = score => {
 /*!*************************************!*\
   !*** ./src/client/styles/base.scss ***!
   \*************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Undefined variable: \"$colour-bg\".\n        on line 2 of src/client/styles/base.scss\n>>   background-color: $colour-bg;\n\n   --------------------^\n\n    at /Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.callback (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/sass-loader/dist/index.js:62:7)\n    at Object.done [as callback] (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/neo-async/async.js:8069:18)\n    at options.error (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/node-sass/lib/index.js:293:32)");
 
 /***/ }),
 
@@ -273,27 +271,10 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************!*\
   !*** ./src/client/styles/fonts.scss ***!
   \**************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./src/client/styles/footer.scss":
-/*!***************************************!*\
-  !*** ./src/client/styles/footer.scss ***!
-  \***************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Undefined variable: \"$font-main\".\n        on line 2 of src/client/styles/fonts.scss\n>>   font: 25px/1.2 $font-main;\n\n   -----------------^\n\n    at /Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.callback (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/sass-loader/dist/index.js:62:7)\n    at Object.done [as callback] (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/neo-async/async.js:8069:18)\n    at options.error (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/node-sass/lib/index.js:293:32)");
 
 /***/ }),
 
@@ -301,27 +282,10 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./src/client/styles/form.scss ***!
   \*************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./src/client/styles/header.scss":
-/*!***************************************!*\
-  !*** ./src/client/styles/header.scss ***!
-  \***************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Undefined variable: \"$colour-primary\".\n        on line 19 of src/client/styles/form.scss\n>>     background: $colour-primary;\n\n   ----------------^\n\n    at /Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.callback (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/sass-loader/dist/index.js:62:7)\n    at Object.done [as callback] (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/neo-async/async.js:8069:18)\n    at options.error (/Users/wendy/Documents/Courses/WebDevelopment/Final-project-capstone/travel-planner/node_modules/node-sass/lib/index.js:293:32)");
 
 /***/ }),
 
@@ -329,6 +293,20 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************!*\
   !*** ./src/client/styles/resets.scss ***!
   \***************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/client/styles/variables.scss":
+/*!******************************************!*\
+  !*** ./src/client/styles/variables.scss ***!
+  \******************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 

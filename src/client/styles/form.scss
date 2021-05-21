@@ -1,13 +1,15 @@
+@import 'variables.scss';
+
 form {
   background-color: #fff;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 6px;
   padding: 30px 30px 30px 30px;
 }
 
 input {
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 20px;
   font-size: 60%;
   line-height: 16px;
@@ -16,7 +18,7 @@ input {
 }
 
 button {
-    background: #7D407D;
+    background: $colour-second;
     border-radius: 3px;
     color: #fff;
     font-size: 60%;
@@ -27,11 +29,17 @@ button {
 }
 
 button:hover {
-    background: #ff665a;
+    background: $colour-primary;;
 }
 
-@media(min-width:700px) {
+@media(min-width:595px) {
   input {
-    width: 33%;
+    width: 45%;
+  }
+}
+
+@media(min-width:795px) {
+  input {
+    width: 35%;
   }
 }

@@ -1,20 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=News+Cycle:wght@400;700&display=swap');
-
-$font-main: 'News Cycle', sans-serif;
-$font-head: 'Bungee Shade', cursive;
-$colour-primary: #d90452;
-$colour-second: #7D407D;
-$colour-neutral: #333132;
+@import 'variables.scss';
 
 body {
   font: 25px/1.2 $font-main;
-  color: $colour-neutral;
+  color: $colour-body;
 }
 
 h1 {
-  font: 55px/1.5 $font-head;
+  font: 55px/1 $font-head;
   color: $colour-primary;
-  margin-top: 30px;
+  margin: 30px 0 15px;
 }
 
 h2 {
@@ -24,8 +18,8 @@ h2 {
 }
 
 .footer-text {
-  font: 20px/3 $font-head;
-  color: $colour-second;
+  font-size: 60%;
+  margin-top: 20px;
   text-transform: uppercase;
 }
 

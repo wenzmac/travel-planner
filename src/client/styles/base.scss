@@ -1,5 +1,7 @@
+@import 'variables.scss';
+
 html {
-  background-color: #F2F2ED;
+  background-color: $colour-bg;
 }
 
 body {
@@ -14,8 +16,22 @@ main {
 }
 
 section {
-    max-width: 800px;
+    max-width: 950px;
     margin: 50px auto;
+}
+
+header {
+    padding: 20px 30px 0;
+}
+
+footer {
+  margin-top: 50px;
+}
+
+hr {
+  height: 1px;
+  background-color: #ccc;
+  border: none;
 }
 
 .hide {
