@@ -1,0 +1,135 @@
+@import url(https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&family=Staatliches&display=swap);
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+* {
+  box-sizing: border-box; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+ul {
+  list-style-type: none; }
+
+html {
+  background-color: #F2F2ED; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 8vh;
+  text-align: center; }
+
+main {
+  flex: 2; }
+
+section {
+  max-width: 800px;
+  margin: 50px auto; }
+
+.hide {
+  display: none; }
+
+footer {
+  margin-top: 50px; }
+
+hr {
+  width: 800px; }
+
+form {
+  background-color: #f0d43a;
+  border: 1px solid #545454;
+  border-radius: 3px;
+  padding: 40px; }
+
+input {
+  padding: 20px 20px;
+  width: 100%;
+  font-size: 75%;
+  line-height: 16px;
+  margin: 10px 0;
+  text-align: center; }
+
+button {
+  background: #7D407D;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  border: none;
+  margin: 20px 0 15px;
+  padding: 10px 15px; }
+
+button:hover {
+  background: #ff665a; }
+
+header {
+  padding: 20px 30px 0; }
+
+body {
+  font: 25px/1.2 "News Cycle", sans-serif;
+  color: #333132; }
+
+h1 {
+  font: 50px/1.5 "Staatliches", cursive;
+  color: #ff665a;
+  margin-top: 30px; }
+
+h2 {
+  font: 25px/1 "News Cycle", sans-serif;
+  font-weight: bold;
+  color: #7D407D; }
+
+.footer-text {
+  font: 20px/3 "Staatliches", cursive;
+  text-transform: uppercase; }
+
+section.results ul {
+  margin-top: 15px; }
+
+section.results li {
+  font-size: 20px;
+  margin-top: 10px; }
+
+
+/*# sourceMappingURL=main.css.map*/
