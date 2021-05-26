@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css2?family=Bungee+Shade&family=News+Cycle:wght@400;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Bungee+Shade&family=News+Cycle:wght@400;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Bungee+Shade&family=News+Cycle:wght@400;700&display=swap);
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -52,7 +54,99 @@ table {
 ul {
   list-style-type: none; }
 
+html {
+  background-color: #F2F2ED; }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 8vh;
+  text-align: center; }
+
+main {
+  flex: 2; }
+
+section {
+  max-width: 950px;
+  margin: 50px auto; }
+
+header {
+  padding: 20px 30px 0; }
+
+footer {
+  margin-top: 50px; }
+
+hr {
+  height: 1px;
+  background-color: #ccc;
+  border: none;
+  width: 950px; }
+
+.hide {
+  display: none; }
+
+form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 30px 30px 30px 30px; }
+
+input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  font-size: 60%;
+  line-height: 16px;
+  margin: 10px 10px;
+  width: 95%; }
+
+button {
+  background: #13a3a5;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 60%;
+  text-transform: uppercase;
+  border: none;
+  margin: 10px 10px;
+  padding: 20px; }
+
+button:hover {
+  background: #e54e45; }
+
+@media (min-width: 595px) {
+  input {
+    width: 45%; } }
+
+@media (min-width: 795px) {
+  input {
+    width: 35%; } }
+
+body {
+  font: 25px/1.2 "News Cycle", sans-serif;
+  color: #333132; }
+
+h1 {
+  font: 55px/1 "Bungee Shade", cursive;
+  color: #e54e45;
+  margin: 30px 0 15px; }
+
+h2 {
+  font: 25px/1 "News Cycle", sans-serif;
+  font-weight: bold;
+  color: #13a3a5; }
+
+.footer-text {
+  font-size: 60%;
+  margin-top: 20px;
+  text-transform: uppercase;
+  color: #13a3a5; }
+
+section.results ul {
+  margin-top: 15px; }
+
+section.results li {
+  font-size: 20px;
+  margin-top: 10px; }
 
 
 /*# sourceMappingURL=main.css.map*/
