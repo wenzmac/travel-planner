@@ -19,8 +19,8 @@
         <main>
             <section>
                 <form>
-                    <input id="city" type="text" name="input" value="" onblur="onBlur()" placeholder="Enter city">
-                    <input id="date" type="text" name="input" value="" onblur="onBlur()" placeholder="Enter date">
+                    <input id="userCity" type="text" name="input" placeholder="Enter city">
+                    <input id="date" type="text" name="input" placeholder="Enter date">
                     <button id="generate" type="submit" name="" value="submit">Check it out</button>
                 </form>
             </section>
@@ -42,9 +42,6 @@
             <hr>
             <p class="footer-text">Made by Wendy Mackay</p>
         </footer>
-        <script>
-          document.getElementById('generate').addEventListener('click', performAction);
-        </script>
         <!--
         <script>
           // Check that service workers are supported

@@ -91,13 +91,13 @@ var Client =
 /*!*****************************!*\
   !*** ./src/client/index.js ***!
   \*****************************/
-/*! exports provided: handleSubmit */
+/*! exports provided: performAction */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/app */ "./src/client/js/app.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "handleSubmit", function() { return _js_app__WEBPACK_IMPORTED_MODULE_0__["handleSubmit"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "performAction", function() { return _js_app__WEBPACK_IMPORTED_MODULE_0__["performAction"]; });
 
 /* harmony import */ var _styles_resets_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/resets.scss */ "./src/client/styles/resets.scss");
 /* harmony import */ var _styles_base_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/base.scss */ "./src/client/styles/base.scss");
@@ -116,117 +116,38 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************!*\
   !*** ./src/client/js/app.js ***!
   \******************************/
-/*! exports provided: handleSubmit */
+/*! exports provided: performAction */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handleSubmit", function() { return handleSubmit; });
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "performAction", function() { return performAction; });
+// Listen for click of button
+document.getElementById('generate').addEventListener('click', performAction);
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function handleSubmit(event) {
-  var userCity = document.getElementById('city').value;
-  event.preventDefault();
-  console.log("::: Form Submitted :::"); // Fetch request
-
+function performAction(e) {
+  e.preventDefault();
+  var city = document.getElementById('userCity').value;
   fetch('http://localhost:9090/destination', {
     method: 'POST',
-    cache: "no-cache",
     credentials: 'same-origin',
-    mode: 'cors',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      inputText: inputText
-    })
-  }).then(function (res) {
-    console.log(res);
-    return res.json();
+    body: JSON.stringify(e)
+  }, {
+    destination: city
   }).then(function (response) {
-    console.log("Update UI");
-  });
-} //else {
-//  alert("Please enter a valid URL");
-//  console.log("Not valid url");
-//}
-
-
- // Async post function
-
-var postData = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var url,
-        data,
-        response,
-        newData,
-        _args = arguments;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            url = _args.length > 0 && _args[0] !== undefined ? _args[0] : '';
-            data = _args.length > 1 && _args[1] !== undefined ? _args[1] : {};
-            _context.next = 4;
-            return fetch(url, {
-              method: 'POST',
-              //credentials: 'same-origin',
-              credentials: 'include',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(data)
-            });
-
-          case 4:
-            response = _context.sent;
-            _context.prev = 5;
-            _context.next = 8;
-            return response.json();
-
-          case 8:
-            newData = _context.sent;
-            console.log(newData);
-            return _context.abrupt("return", newData);
-
-          case 13:
-            _context.prev = 13;
-            _context.t0 = _context["catch"](5);
-            console.log("error", _context.t0); // appropriately handle the error
-
-          case 16:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee, null, [[5, 13]]);
-  }));
-
-  return function postData() {
-    return _ref.apply(this, arguments);
-  };
-}(); // today's date
-
-
-var d = new Date();
-var month = d.getMonth() + 1;
-var newDate = d.getDate() + '.' + month + '.' + d.getFullYear(); // Listen for click of button
-
-document.getElementById('submit-form').addEventListener('click', handleSubmit);
-/*
-// Async fetch that gets info for the URL to get weather data
-const performAction(e) => {
-  postData('http://localhost:3030/destination', {
-      temperature:data.main.temp,
-      date:newDate,
-      feelings:userFeelings});
-    // Calls update user interface function
-    // updateUI();
+    return response.json();
+  }, console.log("client fetch")).then(function (response) {
+    console.log("Updating UI");
+    document.getElementById('city').innerHTML = "The city you're travelling to is: ".concat(destData.city);
+  })["catch"](function (error) {
+    return console.log(error);
   });
 }
-*/
+
+
 
 /***/ }),
 
