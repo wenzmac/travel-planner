@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Setup empty JS object to act as endpoint for all routes
-let projectData = {};
+let destinationData = {};
 
 // Require Express to run server and routes
 const express = require('express');
@@ -41,47 +41,18 @@ app.listen(9090, function () {
     console.log('Example app listening on port 9090!')
 })
 
-//POST request
-app.post('/destination', async(req, res) => {
-  // API URL variables
-  let geoNameApiKey = process.env.GEONAME_API_KEY;
-  let weatherbitApiKey = process.env.WEATHER_API_KEY;
-  let pixabayApiKey = process.env.PIXABAY_API_KEY;
-
-  const userCity = req.body.city;
-  console.log(req.body.city)
-
-  const geoNameData = await fetch(`http://api.geonames.org/searchJSON?q=${userCity}&maxRows=1&username=${geoNameApiKey}`, {
-    method: 'POST'
-  });
-  try {
-    const data = await geoNameData.json()
-    console.log(geoNameData)
-    console.log("::: geoNameData :::", data)
-    res.send(data);
-  }
-  catch (err) {
-    console.log("error", err)
-  }
-});
-
-
-
-
-/*
 //Get route
 app.get('/all', function (request, response) {
-  response.send(projectData);
+  response.send(destinationData);
 });
 
 //Post route
 app.post('/addTripData', addData);
 
 function addData (request, response) {
-    projectData.temperature = request.body.temperature;
-    projectData.date = request.body.date;
-    projectData.feelings = request.body.feelings;
+    //destinationData.temperature = request.body.temperature;
+  //  destinationData.date = request.body.date;
+    //destinationData.feelings = request.body.feelings;
     response.end();
-    console.log(projectData);
+    console.log(destinationData);
 }
-*/
