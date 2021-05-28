@@ -24,10 +24,11 @@ const postData = async (url='', data={}) => {
 
 
 // Listen for click of button
-document.getElementById('submit-form').addEventListener('click', performAction);
+//document.getElementById('generate').addEventListener('click', performAction);
 
 // Async fetch that gets info for the URL to get weather data
 function performAction(e) {
+  console.log("first step done");
   event.preventDefault()
   const inputCity =  document.getElementById('city').value;
   const inputDate = document.getElementById('date').value;
@@ -59,6 +60,11 @@ const getLongLat = async (inputCity) => {
   }
 }
 
+export {
+  postData,
+  performAction,
+  getLongLat
+}
 
 /*
 //POST request
