@@ -127,21 +127,27 @@ document.getElementById('generate').addEventListener('click', performAction);
 
 function performAction(e) {
   e.preventDefault();
-  var city = document.getElementById('userCity').value;
+  var destCity = document.getElementById('userCity').value; // put formChecker here
+
   fetch('http://localhost:9090/destination', {
     method: 'POST',
     credentials: 'same-origin',
+    mode: 'cors',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(e)
-  }, {
-    destination: city
+    body: JSON.stringify({
+      destCity: destCity
+    })
   }).then(function (response) {
+    console.log(response);
     return response.json();
-  }, console.log("client fetch")).then(function (response) {
+  }) //.then(response => response.json()
+  //console.log("client fetch")
+  //)
+  .then(function (response) {
     console.log("Updating UI");
-    document.getElementById('city').innerHTML = "The city you're travelling to is: ".concat(destData.city);
+    document.getElementById('city').innerHTML = "The city you're travelling to is: ".concat(destCity);
   })["catch"](function (error) {
     return console.log(error);
   });

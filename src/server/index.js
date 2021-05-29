@@ -29,27 +29,14 @@ app.get('/', function (req, res) {
   // res.sendFile('dist/index.html')
 })
 
-const getLongLat = async (inputCity) => {
-  let geoNameApiKey = process.env.GEONAME_API_KEY;
-  const response = await fetch('http://api.geonames.org/searchJSON?q=' + inputCity + '&maxRows=1&username=' + geoNameApiKey);
-  try {
-    const data = await response.json();
-      console.log("getLongLat function done", data);
-      return data;
-    }
-    catch(error) {
-      console.log("error", error);
-  }
-}
-
-app.post('/destination', async (req, res) => {
+app.post('/destination', async (request, response) => {
   let geoNameApiKey = process.env.GEONAME_API_KEY;
   //let weatherKey = process.env.WEATHERBIT_KEY;
   //let pixabayKey = process.env.PIXABAY_KEY;
 
   let destData = {};
 
-  const inputCity = req.body.destination;
+  const inputCity = request.body.destCity;
 
   // geoname fetch store info in destData
   await fetch('http://api.geonames.org/searchJSON?q=' + inputCity + '&maxRows=1&username=' + geoNameApiKey)
