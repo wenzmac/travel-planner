@@ -15,7 +15,6 @@ function performAction(e) {
     body: JSON.stringify({destCity}),
     })
   .then (response => {
-  console.log(response)
   return response.json()
   })
   //.then(response => response.json()

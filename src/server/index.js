@@ -30,12 +30,9 @@ app.get('/', function (req, res) {
 })
 
 app.post('/destination', async (request, response) => {
-  let geoNameApiKey = process.env.GEONAME_API_KEY;
-  //let weatherKey = process.env.WEATHERBIT_KEY;
-  //let pixabayKey = process.env.PIXABAY_KEY;
-
   let destData = {};
 
+  let geoNameApiKey = process.env.GEONAME_API_KEY;
   const inputCity = request.body.destCity;
 
   // geoname fetch store info in destData
@@ -46,63 +43,64 @@ app.post('/destination', async (request, response) => {
       city: response.geonames[0].toponymName,
       country: response.geonames[0].countryName,
       lat: response.geonames[0].lat,
-      long: response.geonames[0].lat
+      long: response.geonames[0].lng
     }
   })
-  .then(response => console.log("server fetch", inputCity, destData))
-  //.catch(error => console.log("geoName fetch error", error));
-  /*
+  .then(response => console.log("geoName fetch done", inputCity))
+  .catch(error => console.log("geoName fetch error", error));
+
   // weatherbit fetch store info in destData
-  await fetch(`https://api.weatherbit.io/v2.0/current?lat=${destData.lat}&lon=${destData.lng}&key=${weatherKey}`)
-  .then(response => response.json())
-  .then(response => {
-    destData = {
-      ...destData,
-      curentWeather: response.data[0]
-    }
-  })
-  .catch(error => console.log("weatherbit current weather fetch error", error));
-
-  // forecast weather fetch store info in destData
-  await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${destData.lat}&lon=${destData.lng}&key=${weatherKey}`)
-  .then(response => response.json())
-  .then(response => {
-    destData = {
-      ...destData,
-      forecastWeather: response.data
-    }
-  })
-  .catch(error => console.log("weatherbit forecast fetch error", error));
-
-  const pixabayQueryCity  = `&q=${data.city}&orientation=horizontal&image_type=photo`;
-  const pixabayQueryCountry  = `&q=${data.countryName}&orientation=horizontal&image_type=photo`;
-  let pixabayUrl = `https://pixabay.com/api/?key=${pixabayKey}${pixabayQueryCity}`;
-  let imageURL = '';
-
-  await fetch(pixabayUrl)
-  .then(response => response.json())
-  .then(response => {
-    imageURL = response.hits[0].webformatURL;
-  })
-  .catch(error => console.log('error', error));
-
-  if(imageURL === '') {
-    let pixabayUrl = `https://pixabay.com/api/?key=${pixabayKey}${pixabayQueryCountry}`;
-    await fetch(pixabayUrl)
+  let weatherApiKey = process.env.WEATHERBIT_API_KEY;
+  await fetch(`https://api.weatherbit.io/v2.0/current?lat=${destData.lat}&lon=${destData.long}&key=${weatherApiKey}`)
     .then(response => response.json())
     .then(response => {
-      imageURL = response.hits[0].webformatURL;
+      destData = {
+        ...destData,
+        currentWeather: response.data[0]
+      }
     })
-    .catch(error => console.log('error', error));
-  }
+    .then(response => console.log("weatherbit current fetch done"))
+    .catch(error => console.log("weatherbit current fetch error", error));
 
-  destData = {
-    ...destData,
-    imageURL
-  }
+  // forecast weather fetch store info in destData
+  await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${destData.lat}&lon=${destData.long}&key=${weatherApiKey}`)
+    .then(response => response.json())
+    .then(response => {
+      destData = {
+        ...destData,
+        forecastWeather: response.data
+      }
+    })
+    .then(response => console.log("weatherbit forecast fetch done"))
+    .catch(error => console.log("weatherbit forecast fetch error", error));
 
-  res.send(data);
-  */
+  // pixabay fetch store info in destData
+  let pixabayApiKey = process.env.PIXABAY_API_KEY;
+  const pixabayCity  = destData.city;
+  const pixabayCountry  = destData.country;
+
+  await fetch(`https://pixabay.com/api/?key=${pixabayApiKey}&q=${pixabayCity}&orientation=horizontal&image_type=photo`)
+    .then(response => response.json())
+    .then(response => {
+      destData = {
+        ...destData,
+        cityImage: response.hits[1].webformatURL
+      }
+    })
+    .catch(error => console.log("pixabayCity fetch error", error));
+
+  await fetch(`https://pixabay.com/api/?key=${pixabayApiKey}&q=${pixabayCountry}&orientation=horizontal&image_type=photo`)
+    .then(response => response.json())
+    .then(response => {
+      destData = {
+        ...destData,
+        countryImage: response.hits[0].webformatURL
+      }
+    })
+    .then(response => console.log("pixabay fetch", destData))
+    .catch(error => console.log("pixabayCountry fetch error", error));
+
+  response.send(destData);
 });
 /*
 app.get('/background', (req, res) => {
