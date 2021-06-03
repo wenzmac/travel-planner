@@ -1,8 +1,12 @@
 @import 'variables.scss';
 
 body {
-  font: 25px/1.2 $font-main;
+  font: 20px/1.1 $font-main;
   color: $colour-body;
+}
+
+.intro {
+  font: 25px/1.2 $font-main;
 }
 
 h1 {
@@ -12,25 +16,23 @@ h1 {
 }
 
 h2 {
-  font: 25px/1 $font-main;
+  font: 35px/1 $font-main;
   font-weight: bold;
   color: $colour-second;
-  margin: 50px 0 15px;
+  margin: 5px 0 20px 0;
+}
+
+.temp-text {
+  font-size: 200%;
 }
 
 .footer-text {
-  font-size: 60%;
+  font-size: 80%;
   margin-top: 20px;
   text-transform: uppercase;
   color: $colour-second;
 }
 
-section.results {
-  ul {
-    margin-top: 15px;
-  }
-  li {
-    font-size: 20px;
-    margin-top: 10px;
-  }
+label {
+  font: 25px/1.2 $font-main;
 }

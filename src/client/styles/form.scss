@@ -10,22 +10,23 @@ form {
 input {
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 20px;
-  font-size: 60%;
-  line-height: 16px;
-  margin: 10px 10px;
+  padding: 10px 20px;
+  font-size: 80%;
   width: 95%;
+  min-height: 60px;
+  margin: 10px 10px;
 }
 
 button {
     background: $colour-second;
     border-radius: 3px;
     color: #fff;
-    font-size: 60%;
+    font-size: 90%;
     text-transform: uppercase;
     border: none;
     margin: 10px 10px;
-    padding: 20px;
+    padding: 10px 20px;
+    min-height: 60px;
 }
 
 button:hover {

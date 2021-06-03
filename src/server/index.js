@@ -125,25 +125,12 @@ app.post('/destination', async (request, response) => {
     .then(response => console.log("rest countries fetch", destData))
     .catch(error => console.log("rest countries fetch error", error));
 
-  response.send(destData);
+  try {
+    response.send(destData);
+  }
+  catch (error) {
+    console.log("end of fetch error", error)
+  }
+  //return(destData);
+  //response.send(destData);
 });
-/*
-app.get('/background', (req, res) => {
-    const key = process.env.PIXABAY_KEY;
-    const query = '&q=city&orientation=horizontal&image_type=photo';
-    const url = `https://pixabay.com/api/?key=${key}${query}`;
-    const options = {
-        method: 'POST'
-    }
-    fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
-        const randomImage = Math.floor(Math.random() * 20);
-        const image = data.hits[randomImage];
-        if(image !== undefined || image !== '') {
-            res.send({url:image.largeImageURL});
-        }
-    })
-    .catch(error => console.log('error', error));
-});
-*/
