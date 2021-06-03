@@ -24,10 +24,16 @@ app.listen(9090, function () {
   console.log('Example app listening on port 9090!')
 })
 
+/*
 app.get('/', function (req, res) {
   res.sendFile(path.resolve('dist/index.html'))
   // res.sendFile('dist/index.html')
 })
+*/
+
+app.get('/all', function (request, response) {
+  response.send(destData);
+});
 
 app.post('/destination', async (request, response) => {
   let destData = {};
@@ -56,7 +62,9 @@ app.post('/destination', async (request, response) => {
     .then(response => {
       destData = {
         ...destData,
-        currentWeather: response.data[0]
+        currentTemp: response.data[0].temp,
+        currentDescription: response.data[0].weather.description,
+        currentIcon: response.data[0].weather.icon,
       }
     })
     .then(response => console.log("weatherbit current fetch done"))
@@ -68,7 +76,13 @@ app.post('/destination', async (request, response) => {
     .then(response => {
       destData = {
         ...destData,
-        forecastWeather: response.data
+        day1: [{maxTemp: response.data[1].max_temp, description: response.data[1].weather.description, icon: response.data[1].weather.icon}],
+        day2: [{maxTemp: response.data[2].max_temp, description: response.data[2].weather.description, icon: response.data[2].weather.icon}],
+        day3: [{maxTemp: response.data[3].max_temp, description: response.data[3].weather.description, icon: response.data[3].weather.icon}],
+        day4: [{maxTemp: response.data[4].max_temp, description: response.data[4].weather.description, icon: response.data[4].weather.icon}],
+        day5: [{maxTemp: response.data[5].max_temp, description: response.data[5].weather.description, icon: response.data[5].weather.icon}],
+        day6: [{maxTemp: response.data[6].max_temp, description: response.data[6].weather.description, icon: response.data[6].weather.icon}],
+        day7: [{maxTemp: response.data[7].max_temp, description: response.data[7].weather.description, icon: response.data[7].weather.icon}]
       }
     })
     .then(response => console.log("weatherbit forecast fetch done"))
@@ -76,10 +90,8 @@ app.post('/destination', async (request, response) => {
 
   // pixabay fetch store info in destData
   let pixabayApiKey = process.env.PIXABAY_API_KEY;
-  const pixabayCity  = destData.city;
-  const pixabayCountry  = destData.country;
 
-  await fetch(`https://pixabay.com/api/?key=${pixabayApiKey}&q=${pixabayCity}&orientation=horizontal&image_type=photo`)
+  await fetch(`https://pixabay.com/api/?key=${pixabayApiKey}&q=${destData.city}&orientation=horizontal&image_type=photo`)
     .then(response => response.json())
     .then(response => {
       destData = {
@@ -89,7 +101,7 @@ app.post('/destination', async (request, response) => {
     })
     .catch(error => console.log("pixabayCity fetch error", error));
 
-  await fetch(`https://pixabay.com/api/?key=${pixabayApiKey}&q=${pixabayCountry}&orientation=horizontal&image_type=photo`)
+  await fetch(`https://pixabay.com/api/?key=${pixabayApiKey}&q=${destData.country}&orientation=horizontal&image_type=photo`)
     .then(response => response.json())
     .then(response => {
       destData = {
@@ -97,8 +109,21 @@ app.post('/destination', async (request, response) => {
         countryImage: response.hits[0].webformatURL
       }
     })
-    .then(response => console.log("pixabay fetch", destData))
+    .then(response => console.log("pixabay fetch"))
     .catch(error => console.log("pixabayCountry fetch error", error));
+
+  await fetch(`https://restcountries.eu/rest/v2/name/${destData.country}`)
+    .then(response => response.json())
+    .then(response => {
+      destData = {
+        ...destData,
+        language: response[0].languages[0].name,
+        currency: response[0].currencies[0].name,
+        population: response[0].population
+      }
+    })
+    .then(response => console.log("rest countries fetch", destData))
+    .catch(error => console.log("rest countries fetch error", error));
 
   response.send(destData);
 });

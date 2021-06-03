@@ -140,14 +140,16 @@ function performAction(e) {
       destCity: destCity
     })
   }).then(function (response) {
-    console.log(response);
     return response.json();
-  }) //.then(response => response.json()
+  }); //.then(response => response.json()
   //console.log("client fetch")
   //)
-  .then(function (response) {
+
+  fetch('http://localhost:9090/all').then(function (response) {
+    return response.json();
+  }).then(function (response) {
     console.log("Updating UI");
-    document.getElementById('city').innerHTML = "The city you're travelling to is: ".concat(destCity);
+    document.getElementById('results').innerHTML = "\n    <h2>Hooray! You're going to ".concat(allData.city, ", ").concat(allData.counrty, "</h2>\n      <p>Your trip is XX days away</p>\n      <h3>Current weather</h3>\n      <p><img=\"https://www.weatherbit.io/static/img/icons/").concat(allData.currentIcon, ".png\"> ").concat(allData.currentDescription, ", ").concat(destData.currentTemp, " C</p>\n      ");
   })["catch"](function (error) {
     return console.log(error);
   });
