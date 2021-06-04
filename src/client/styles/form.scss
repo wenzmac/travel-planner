@@ -18,7 +18,7 @@ input {
 }
 
 button {
-    background: $colour-second;
+    background: $colour-primary;
     border-radius: 3px;
     color: #fff;
     font-size: 90%;
@@ -26,11 +26,11 @@ button {
     border: none;
     margin: 10px 10px;
     padding: 10px 20px;
-    min-height: 60px;
+    min-height: 59px;
 }
 
 button:hover {
-    background: $colour-primary;;
+    background: $colour-second;;
 }
 
 @media(min-width:595px) {

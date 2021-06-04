@@ -94,21 +94,22 @@ form {
 input {
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 20px;
-  font-size: 60%;
-  line-height: 16px;
-  margin: 10px 10px;
-  width: 95%; }
+  padding: 10px 20px;
+  font-size: 80%;
+  width: 95%;
+  min-height: 60px;
+  margin: 10px 10px; }
 
 button {
   background: #13a3a5;
   border-radius: 3px;
   color: #fff;
-  font-size: 60%;
+  font-size: 90%;
   text-transform: uppercase;
   border: none;
   margin: 10px 10px;
-  padding: 20px; }
+  padding: 10px 20px;
+  min-height: 59px; }
 
 button:hover {
   background: #e54e45; }
@@ -122,8 +123,11 @@ button:hover {
     width: 35%; } }
 
 body {
-  font: 25px/1.2 "News Cycle", sans-serif;
+  font: 20px/1.1 "News Cycle", sans-serif;
   color: #333132; }
+
+.intro {
+  font: 25px/1.2 "News Cycle", sans-serif; }
 
 h1 {
   font: 55px/1 "Bungee Shade", cursive;
@@ -131,23 +135,72 @@ h1 {
   margin: 30px 0 15px; }
 
 h2 {
-  font: 25px/1 "News Cycle", sans-serif;
+  font: 35px/1 "News Cycle", sans-serif;
   font-weight: bold;
   color: #13a3a5;
-  margin: 50px 0 15px; }
+  margin: 30px 0 10px 0; }
+
+h3 {
+  font: 23px/1 "News Cycle", sans-serif;
+  font-weight: bold;
+  color: #13a3a5;
+  margin: 20px 0 10px 0; }
+
+.temp-text {
+  font-size: 180%;
+  line-height: 0.2;
+  margin: 0 0 20px; }
 
 .footer-text {
-  font-size: 60%;
+  font-size: 90%;
   margin-top: 20px;
-  text-transform: uppercase;
-  color: #13a3a5; }
+  letter-spacing: 2px;
+  text-transform: uppercase; }
 
-section.results ul {
-  margin-top: 15px; }
+.small {
+  font-size: 70%;
+  margin-top: 5px;
+  letter-spacing: 2px;
+  text-transform: uppercase; }
 
-section.results li {
-  font-size: 20px;
-  margin-top: 10px; }
+label {
+  font: 25px/1.2 "News Cycle", sans-serif; }
+
+a {
+  color: #333132; }
+
+a:hover {
+  color: #e54e45;
+  text-decoration: none; }
+
+.main-result-flex {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  justify-content: space-between; }
+
+.flex-box-left {
+  width: 35%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px; }
+
+.flex-box-right {
+  width: 60%; }
+
+.extra-results-flex {
+  display: flex;
+  list-style-type: none;
+  margin: 30px 0;
+  justify-content: space-between; }
+
+.flex-box {
+  padding: 0 30px; }
+
+#destinationImage {
+  width: 100%;
+  border-radius: 6px; }
 
 
 /*# sourceMappingURL=main.css.map*/

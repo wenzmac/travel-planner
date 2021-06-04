@@ -91,7 +91,7 @@ var Client =
 /*!*****************************!*\
   !*** ./src/client/index.js ***!
   \*****************************/
-/*! exports provided: performAction, updateUI, addDays, dateRestrict */
+/*! exports provided: performAction, updateUI, dateRestrict */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -104,18 +104,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "updateUI", function() { return _js_updateUI__WEBPACK_IMPORTED_MODULE_1__["updateUI"]; });
 
 /* harmony import */ var _js_dateInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/dateInput */ "./src/client/js/dateInput.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "addDays", function() { return _js_dateInput__WEBPACK_IMPORTED_MODULE_2__["addDays"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "dateRestrict", function() { return _js_dateInput__WEBPACK_IMPORTED_MODULE_2__["dateRestrict"]; });
 
 /* harmony import */ var _styles_resets_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles/resets.scss */ "./src/client/styles/resets.scss");
 /* harmony import */ var _styles_base_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles/base.scss */ "./src/client/styles/base.scss");
 /* harmony import */ var _styles_form_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styles/form.scss */ "./src/client/styles/form.scss");
 /* harmony import */ var _styles_fonts_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styles/fonts.scss */ "./src/client/styles/fonts.scss");
+/* harmony import */ var _styles_results_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./styles/results.scss */ "./src/client/styles/results.scss");
+/* harmony import */ var _media_loading_plane_gif__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./media/loading-plane.gif */ "./src/client/media/loading-plane.gif");
+/* harmony import */ var _media_icon_currency_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./media/icon-currency.png */ "./src/client/media/icon-currency.png");
+/* harmony import */ var _media_icon_language_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./media/icon-language.png */ "./src/client/media/icon-language.png");
+/* harmony import */ var _media_icon_population_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./media/icon-population.png */ "./src/client/media/icon-population.png");
+// Functions
+
+
+
+ // Styles
 
 
 
 
+
+ // Media
 
 
 
@@ -134,8 +144,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "performAction", function() { return performAction; });
+// EVENT LISTENER
 // Listen for click of button
-document.getElementById('generate').addEventListener('click', performAction);
+document.getElementById('generate').addEventListener('click', performAction); // MAIN APP FUNCTION
+// Takes the city input and sends to the server
 
 function performAction(e) {
   e.preventDefault();
@@ -151,17 +163,58 @@ function performAction(e) {
     body: JSON.stringify({
       destCity: destCity
     })
-  }).then(function (response) {
+  }) // Gets destData as response from the server
+  .then(function (response) {
     console.log("/destination fetch done");
     return response.json();
-  }).then(function (response) {
-    console.log("Updating UI");
-    document.getElementById('results').innerHTML = "\n      <h2>Hooray! You're going to ".concat(response.city, ", ").concat(response.country, "</h2>\n      <p>Your trip is XX days away</p>\n      <h3>Current weather</h3>\n      <p><img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.currentIcon, ".png\"> ").concat(response.currentDescription, ", ").concat(response.currentTemp, " C</p>\n    ");
+  }) // Updates UI
+  .then(function (response) {
+    console.log("Updating UI"); // calls the daysUntilTrip function
+
+    var daysToTrip = daysUntilTrip();
+    document.getElementById('results').innerHTML = "\n      <p>Hooray! You're going to</p>\n      <h2>".concat(response.city, ", ").concat(response.country, "</h2>\n      <p>Your trip is ").concat(daysToTrip, " days away</p>\n      <p><img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.currentIcon, ".png\"></p>\n      <p class=\"temp-text\">").concat(response.currentTemp, "\xB0C</p>\n      <p>").concat(response.currentDescription, "</p>\n    ");
   })["catch"](function (error) {
     return console.log("/destination fetch error", error);
   });
-}
+} // DATE INPUT FIELD
+// creates todays date then formats it so the month and day have 2 digits and as yyyy-mm-dd
+// from todays date it calls on the addDays function to create the date in 16 days
 
+
+var dateRestrict = function dateRestrict() {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var yyyy = today.getFullYear();
+  var dateToday = yyyy + '-' + mm + '-' + dd;
+  var dateFuture = addDays(today, 16);
+  var ddFuture = String(dateFuture.getDate()).padStart(2, '0');
+  var mmFuture = String(dateFuture.getMonth() + 1).padStart(2, '0');
+  var yyyyFuture = dateFuture.getFullYear();
+  var dateMax = yyyyFuture + '-' + mmFuture + '-' + ddFuture;
+  document.getElementById('date').min = dateToday;
+  document.getElementById('date').max = dateMax;
+}; // adds days to a date format
+
+
+var addDays = function addDays(date, days) {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}; // DAYS UNTIL TRIP
+// adds days to a date format
+
+
+var daysUntilTrip = function daysUntilTrip() {
+  var departDate = document.getElementById('date').value;
+  var today = new Date();
+  var depart = new Date(departDate);
+  var result = depart.getDate() - today.getDate();
+  return result;
+  console.log(result);
+};
+
+dateRestrict();
 
 
 /***/ }),
@@ -202,7 +255,6 @@ function addDays(date, days) {
 }
 
 ;
-dateRestrict();
 
 
 /***/ }),
@@ -262,6 +314,58 @@ var updateUI = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./src/client/media/icon-currency.png":
+/*!********************************************!*\
+  !*** ./src/client/media/icon-currency.png ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "e23f4589e4925b2ad271820627c51173.png");
+
+/***/ }),
+
+/***/ "./src/client/media/icon-language.png":
+/*!********************************************!*\
+  !*** ./src/client/media/icon-language.png ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "fab13f2ec6e368ca5122527f3862abad.png");
+
+/***/ }),
+
+/***/ "./src/client/media/icon-population.png":
+/*!**********************************************!*\
+  !*** ./src/client/media/icon-population.png ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "b5891e799634a520ab45f991f18f8678.png");
+
+/***/ }),
+
+/***/ "./src/client/media/loading-plane.gif":
+/*!********************************************!*\
+  !*** ./src/client/media/loading-plane.gif ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "35faa9d0a6ccee24e16611b00d472626.gif");
+
+/***/ }),
+
 /***/ "./src/client/styles/base.scss":
 /*!*************************************!*\
   !*** ./src/client/styles/base.scss ***!
@@ -308,6 +412,20 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************!*\
   !*** ./src/client/styles/resets.scss ***!
   \***************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/client/styles/results.scss":
+/*!****************************************!*\
+  !*** ./src/client/styles/results.scss ***!
+  \****************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
