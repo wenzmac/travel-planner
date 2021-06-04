@@ -76,13 +76,14 @@ app.post('/destination', async (request, response) => {
     .then(response => {
       destData = {
         ...destData,
-        day1: [{maxTemp: response.data[1].max_temp, description: response.data[1].weather.description, icon: response.data[1].weather.icon}],
-        day2: [{maxTemp: response.data[2].max_temp, description: response.data[2].weather.description, icon: response.data[2].weather.icon}],
-        day3: [{maxTemp: response.data[3].max_temp, description: response.data[3].weather.description, icon: response.data[3].weather.icon}],
-        day4: [{maxTemp: response.data[4].max_temp, description: response.data[4].weather.description, icon: response.data[4].weather.icon}],
-        day5: [{maxTemp: response.data[5].max_temp, description: response.data[5].weather.description, icon: response.data[5].weather.icon}],
-        day6: [{maxTemp: response.data[6].max_temp, description: response.data[6].weather.description, icon: response.data[6].weather.icon}],
-        day7: [{maxTemp: response.data[7].max_temp, description: response.data[7].weather.description, icon: response.data[7].weather.icon}]
+        day1: [{date: response.data[1].valid_date, maxTemp: response.data[1].max_temp, description: response.data[1].weather.description, icon: response.data[1].weather.icon}],
+        day2: [{date: response.data[2].valid_date, maxTemp: response.data[2].max_temp, description: response.data[2].weather.description, icon: response.data[2].weather.icon}],
+        day3: [{date: response.data[3].valid_date, maxTemp: response.data[3].max_temp, description: response.data[3].weather.description, icon: response.data[3].weather.icon}],
+        day4: [{date: response.data[4].valid_date, maxTemp: response.data[4].max_temp, description: response.data[4].weather.description, icon: response.data[4].weather.icon}],
+        day5: [{date: response.data[5].valid_date, maxTemp: response.data[5].max_temp, description: response.data[5].weather.description, icon: response.data[5].weather.icon}],
+        day6: [{date: response.data[6].valid_date, maxTemp: response.data[6].max_temp, description: response.data[6].weather.description, icon: response.data[6].weather.icon}],
+        day7: [{date: response.data[7].valid_date, maxTemp: response.data[7].max_temp, description: response.data[7].weather.description, icon: response.data[7].weather.icon}],
+        day8: [{date: response.data[8].valid_date, maxTemp: response.data[8].max_temp, description: response.data[8].weather.description, icon: response.data[8].weather.icon}]
       }
     })
     .then(response => console.log("weatherbit forecast fetch done"))

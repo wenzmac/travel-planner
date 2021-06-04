@@ -115,6 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _media_icon_currency_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./media/icon-currency.png */ "./src/client/media/icon-currency.png");
 /* harmony import */ var _media_icon_language_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./media/icon-language.png */ "./src/client/media/icon-language.png");
 /* harmony import */ var _media_icon_population_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./media/icon-population.png */ "./src/client/media/icon-population.png");
+/* harmony import */ var _media_icon_forecast_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./media/icon-forecast.png */ "./src/client/media/icon-forecast.png");
 // Functions
 
 
@@ -126,6 +127,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
  // Media
+
 
 
 
@@ -172,7 +174,13 @@ function performAction(e) {
     console.log("Updating UI"); // calls the daysUntilTrip function
 
     var daysToTrip = daysUntilTrip();
-    document.getElementById('results').innerHTML = "\n      <p>Hooray! You're going to</p>\n      <h2>".concat(response.city, ", ").concat(response.country, "</h2>\n      <p>Your trip is ").concat(daysToTrip, " days away</p>\n      <p><img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.currentIcon, ".png\"></p>\n      <p class=\"temp-text\">").concat(response.currentTemp, "\xB0C</p>\n      <p>").concat(response.currentDescription, "</p>\n    ");
+    var cityOrCountryImage = response.cityImage;
+
+    if (cityOrCountryImage === '') {
+      var _cityOrCountryImage = response.countryImage;
+    }
+
+    document.getElementById('results').innerHTML = "\n    <div class=\"main-result-flex\">\n      <div class=\"flex-box-left\">\n        <h2>".concat(response.city, ", ").concat(response.country, "</h2>\n        <p>Your trip is ").concat(daysToTrip, " days away</p>\n        <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.currentIcon, ".png\">\n        <p class=\"temp-text\">").concat(response.currentTemp, "\xB0C</p>\n        <p>").concat(response.currentDescription, "</p>\n        <p class=\"small\">(currently)</p>\n      </div>\n\n      <div class=\"flex-box-right\">\n        <img id=\"destinationImage\" src=\"").concat(cityOrCountryImage, "\">\n      </div>\n    </div>\n\n    <div class=\"extra-results-flex\">\n\n      <div class=\"flex-box-icons\">\n        <img src=\"fab13f2ec6e368ca5122527f3862abad.png\">\n        <h3>Language</h3>\n        <p>").concat(response.language, "</p>\n      </div>\n\n      <div class=\"flex-box-icons\">\n        <img src=\"e23f4589e4925b2ad271820627c51173.png\">\n        <h3>Currency</h3>\n        <p>").concat(response.currency, "</p>\n      </div>\n\n      <div class=\"flex-box-icons\">\n        <img src=\"b5891e799634a520ab45f991f18f8678.png\">\n        <h3>Population</h3>\n        <p>").concat(response.population, "</p>\n      </div>\n\n    </div>\n\n    <div class=\"extra-results-flex\">\n\n      <div class=\"flex-box-icons\">\n        <img src=\"8603f68b267a8bab8f580bfbc2532f6a.png\">\n        <h3>Weather forecast</h3>\n      </div>\n\n    </div>\n\n    <div class=\"extra-results-flex\">\n\n      <div class=\"flex-box-forecast\">\n        <ul>\n          <li>\n            ").concat(response.day1[0].date, "\n            <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day1[0].icon, ".png\">\n            ").concat(response.day1[0].maxTemp, "\xB0C, ").concat(response.day1[0].description, "\n          </li>\n          <li>\n            ").concat(response.day2[0].date, "\n            <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day2[0].icon, ".png\">\n            ").concat(response.day2[0].maxTemp, "\xB0C, ").concat(response.day2[0].description, "\n          </li>\n          <li>\n            ").concat(response.day3[0].date, "\n            <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day3[0].icon, ".png\">\n            ").concat(response.day3[0].maxTemp, "\xB0C, ").concat(response.day3[0].description, "\n          </li>\n          <li>\n            ").concat(response.day4[0].date, "\n            <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day4[0].icon, ".png\">\n            ").concat(response.day4[0].maxTemp, "\xB0C, ").concat(response.day4[0].description, "\n          </li>\n        </ul>\n      </div>\n\n      <div class=\"flex-box-forecast\">\n        <ul>\n          <li>\n            ").concat(response.day5[0].date, "\n            <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day5[0].icon, ".png\">\n            ").concat(response.day5[0].maxTemp, "\xB0C, ").concat(response.day5[0].description, "\n          </li>\n          <li>\n            ").concat(response.day6[0].date, "\n            <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day6[0].icon, ".png\">\n            ").concat(response.day6[0].maxTemp, "\xB0C, ").concat(response.day6[0].description, "\n          </li>\n          <li>\n            ").concat(response.day7[0].date, "\n            <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day7[0].icon, ".png\">\n            ").concat(response.day7[0].maxTemp, "\xB0C, ").concat(response.day7[0].description, "\n          </li>\n          <li>\n            ").concat(response.day8[0].date, "\n            <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day8[0].icon, ".png\">\n            ").concat(response.day8[0].maxTemp, "\xB0C, ").concat(response.day8[0].description, "\n          </li>\n        </ul>\n      </div>\n    </div>\n    ");
   })["catch"](function (error) {
     return console.log("/destination fetch error", error);
   });
@@ -266,51 +274,15 @@ function addDays(date, days) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function updateUI() {
+  if (response.cityImage === '') {
+    var _cityOrCountryImage = response.countryImage;
+  } else {
+    var _cityOrCountryImage2 = response.cityImage;
+  }
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var updateUI = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var request;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return fetch('http://localhost:9090/all');
-
-          case 2:
-            request = _context.sent;
-            _context.prev = 3;
-            _context.next = 6;
-            return request.json({
-              destData: destData
-            });
-
-          case 6:
-            console.log("destData received for updateUI");
-            document.getElementById('results').innerHTML = "\n        <h2>Hooray! You're going to ".concat(destData.city, ", ").concat(destData.counrty, "</h2>\n          <p>Your trip is XX days away</p>\n          <h3>Current weather</h3>\n          <p><img=\"https://www.weatherbit.io/static/img/icons/").concat(destData.currentIcon, ".png\"> ").concat(destData.currentDescription, ", ").concat(destData.currentTemp, " C</p>\n          ");
-            _context.next = 13;
-            break;
-
-          case 10:
-            _context.prev = 10;
-            _context.t0 = _context["catch"](3);
-            console.log("error at updateUI", _context.t0);
-
-          case 13:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee, null, [[3, 10]]);
-  }));
-
-  return function updateUI() {
-    return _ref.apply(this, arguments);
-  };
-}(); //export {updateUI}
+  document.getElementById('results').innerHTML = "\n  <div class=\"main-result-flex\">\n    <div class=\"flex-box-left\">\n      <h2>".concat(response.city, ", ").concat(response.country, "</h2>\n      <p>Your trip is ").concat(daysToTrip, " days away</p>\n      <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.currentIcon, ".png\">\n      <p class=\"temp-text\">").concat(response.currentTemp, "\xB0C</p>\n      <p>").concat(response.currentDescription, "</p>\n      <p class=\"small\">(currently)</p>\n    </div>\n\n    <div class=\"flex-box-right\">\n      <img id=\"destinationImage\" src=\"").concat(cityOrCountryImage, "\">\n    </div>\n  </div>\n\n  <div class=\"extra-results-flex\">\n\n    <div class=\"flex-box-icons\">\n      <img src=\"fab13f2ec6e368ca5122527f3862abad.png\">\n      <h3>Language</h3>\n      <p>").concat(response.language, "</p>\n    </div>\n\n    <div class=\"flex-box-icons\">\n      <img src=\"e23f4589e4925b2ad271820627c51173.png\">\n      <h3>Currency</h3>\n      <p>").concat(response.currency, "</p>\n    </div>\n\n    <div class=\"flex-box-icons\">\n      <img src=\"b5891e799634a520ab45f991f18f8678.png\">\n      <h3>Population</h3>\n      <p>").concat(response.population, "</p>\n    </div>\n\n  </div>\n\n  <div class=\"extra-results-flex\">\n\n    <div class=\"flex-box-icons\">\n      <img src=\"8603f68b267a8bab8f580bfbc2532f6a.png\">\n      <h3>Weather forecast</h3>\n    </div>\n\n  </div>\n\n  <div class=\"extra-results-flex\">\n\n    <div class=\"flex-box-forecast\">\n      <ul>\n        <li>\n          ").concat(response.day1.date, "\n          <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day1.icon, ".png\">\n          ").concat(response.day1.maxTemp, "\xB0C, ").concat(response.day1.description, "\n        </li>\n        <li>\n          ").concat(response.day2.date, "\n          <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day2.icon, ".png\">\n          ").concat(response.day2.maxTemp, "\xB0C, ").concat(response.day2.description, "\n        </li>\n        <li>\n          ").concat(response.day3.date, "\n          <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day3.icon, ".png\">\n          ").concat(response.day3.maxTemp, "\xB0C, ").concat(response.day3.description, "\n        </li>\n        <li>\n          ").concat(response.day4.date, "\n          <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day4.icon, ".png\">\n          ").concat(response.day4.maxTemp, "\xB0C, ").concat(response.day4.description, "\n        </li>\n      </ul>\n    </div>\n\n    <div class=\"flex-box-forecast\">\n      <ul>\n        <li>\n          ").concat(response.day5.date, "\n          <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day5.icon, ".png\">\n          ").concat(response.day5.maxTemp, "\xB0C, ").concat(response.day5.description, "\n        </li>\n        <li>\n          ").concat(response.day6.date, "\n          <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day6.icon, ".png\">\n          ").concat(response.day6.maxTemp, "\xB0C, ").concat(response.day6.description, "\n        </li>\n        <li>\n          ").concat(response.day7.date, "\n          <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day7.icon, ".png\">\n          ").concat(response.day7.maxTemp, "\xB0C, ").concat(response.day7.description, "\n        </li>\n        <li>\n          ").concat(response.day8.date, "\n          <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day8.icon, ".png\">\n          ").concat(response.day8.maxTemp, "\xB0C, ").concat(response.day8.description, "\n        </li>\n      </ul>\n    </div>\n  </div>\n  ");
+} //export {updateUI}
 
 /***/ }),
 
@@ -324,6 +296,19 @@ var updateUI = /*#__PURE__*/function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "e23f4589e4925b2ad271820627c51173.png");
+
+/***/ }),
+
+/***/ "./src/client/media/icon-forecast.png":
+/*!********************************************!*\
+  !*** ./src/client/media/icon-forecast.png ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "8603f68b267a8bab8f580bfbc2532f6a.png");
 
 /***/ }),
 

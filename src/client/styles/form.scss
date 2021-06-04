@@ -26,21 +26,19 @@ button {
     border: none;
     margin: 10px 10px;
     padding: 10px 20px;
-    min-height: 59px;
+    min-height: 40px;
 }
 
 button:hover {
     background: $colour-second;;
 }
 
-@media(min-width:595px) {
-  input {
-    width: 45%;
-  }
-}
 
-@media(min-width:795px) {
+@media(min-width:785px) {
   input {
     width: 35%;
+  }
+  button {
+      min-height: 59px;
   }
 }
