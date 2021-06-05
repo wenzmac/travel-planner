@@ -1,13 +1,15 @@
 
 // Functions
 import { performAction } from './js/app'
-import { updateUI } from './js/updateUI'
-import { dateRestrict } from './js/dateInput'
+import { formChecker } from './js/formChecker'
+//import { updateUI } from './js/updateUI'
+//import { dateRestrict } from './js/dateInput'
 
 export {
   performAction,
-  updateUI,
-  dateRestrict
+  formChecker
+  //updateUI,
+  //dateRestrict
 }
 
 // Styles

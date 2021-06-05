@@ -33,6 +33,10 @@ button:hover {
     background: $colour-second;;
 }
 
+#loading-gif {
+  max-width: 300px;
+  margin: 15px 0;
+}
 
 @media(min-width:785px) {
   input {

@@ -1,6 +1,6 @@
 // checker function
-function formChecker(userCity, date) {
-    if (userCity == "" || date == "") {
+function formChecker(destCity, destDate) {
+    if (destCity == "" || destDate == "") {
         return false;
     } else {
         return true;

@@ -97,7 +97,7 @@ app.post('/destination', async (request, response) => {
     .then(response => {
       destData = {
         ...destData,
-        cityImage: response.hits[1].webformatURL
+        cityImage: response.hits[0].webformatURL
       }
     })
     .catch(error => console.log("pixabayCity fetch error", error));

@@ -114,6 +114,10 @@ button {
 button:hover {
   background: #13a3a5; }
 
+#loading-gif {
+  max-width: 300px;
+  margin: 15px 0; }
+
 @media (min-width: 785px) {
   input {
     width: 35%; }
@@ -229,14 +233,7 @@ a:hover {
   .flex-box-icons {
     padding: 0 80px; }
   .flex-box-forecast {
-    padding: 0 20px;
-    text-align: left; }
-    .flex-box-forecast h3 {
-      margin: 70px 0 10px; }
-    .flex-box-forecast img {
-      max-width: 30px;
-      position: relative;
-      top: 8px; } }
+    padding: 0 20px; } }
 
 
 /*# sourceMappingURL=main.css.map*/
