@@ -13,7 +13,6 @@ const fetch = require('node-fetch')
 const { response } = require('express');
 const app = express();
 
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -23,13 +22,6 @@ app.use(express.static('dist'));
 app.listen(9090, function () {
   console.log('Example app listening on port 9090!')
 })
-
-/*
-app.get('/', function (req, res) {
-  res.sendFile(path.resolve('dist/index.html'))
-  // res.sendFile('dist/index.html')
-})
-*/
 
 app.get('/all', function (request, response) {
   response.send(destData);
@@ -129,9 +121,8 @@ app.post('/destination', async (request, response) => {
   try {
     response.send(destData);
   }
+  
   catch (error) {
     console.log("end of fetch error", error)
   }
-  //return(destData);
-  //response.send(destData);
 });

@@ -21,7 +21,7 @@ module.exports = {
                 use: [
                   'file-loader',
                 ],
-            },            
+            },
             {
               test: /\.scss$/,
               use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
@@ -35,7 +35,7 @@ module.exports = {
             filename: "./index.html",
         }),
         new MiniCssExtractPlugin(),
-        //new WorkboxPlugin.GenerateSW()
+        new WorkboxPlugin.GenerateSW()
     ],
     output: {
       libraryTarget: 'var',

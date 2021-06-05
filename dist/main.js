@@ -176,24 +176,15 @@ function performAction(e) {
     }).then(function (response) {
       // calls the daysUntilTrip function
       var daysToTrip = daysUntilTrip();
-
-      if (response.cityImage == "") {
-        var _cityOrCountryImage = response.countryImage;
-      } else {
-        var _cityOrCountryImage2 = response.cityImage;
-      } // Updates UI
-
+      var dayOrDays = singleOrPlural(daysToTrip);
+      var destImage = destImagePicker(response); // Updates UI
 
       console.log("Updating UI");
       document.getElementById('coming').classList.add('hide');
       document.getElementById('loading-gif').classList.add('hide');
-      document.getElementById('results').innerHTML = "\n      <div class=\"main-result-flex\">\n        <div class=\"flex-box-left\">\n          <h2>".concat(response.city, ", ").concat(response.country, "</h2>\n          <p>Your trip is ").concat(daysToTrip, " days away</p>\n          <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.currentIcon, ".png\">\n          <p class=\"temp-text\">").concat(response.currentTemp, "\xB0c</p>\n          <p>").concat(response.currentDescription, "</p>\n          <p class=\"small\">(currently)</p>\n        </div>\n        <div class=\"flex-box-right\">\n          <img id=\"destinationImage\" src=\"").concat(cityOrCountryImage, "\">\n        </div>\n      </div>\n      <div class=\"extra-results-flex\">\n        <div class=\"flex-box-icons\">\n          <img src=\"fab13f2ec6e368ca5122527f3862abad.png\">\n          <h3>Language</h3>\n          <p>").concat(response.language, "</p>\n        </div>\n        <div class=\"flex-box-icons\">\n          <img src=\"e23f4589e4925b2ad271820627c51173.png\">\n          <h3>Currency</h3>\n          <p>").concat(response.currency, "</p>\n        </div>\n        <div class=\"flex-box-icons\">\n          <img src=\"b5891e799634a520ab45f991f18f8678.png\">\n          <h3>Population</h3>\n          <p>").concat(response.population, "</p>\n        </div>\n      </div>\n      <div class=\"extra-results-flex\">\n        <div class=\"flex-box-icons\">\n          <img src=\"8603f68b267a8bab8f580bfbc2532f6a.png\">\n          <h3>Weather forecast</h3>\n        </div>\n      </div>\n      <div class=\"extra-results-flex\">\n        <div class=\"flex-box-forecast\">\n          <ul>\n            <li>").concat(response.day1[0].date, "<img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day1[0].icon, ".png\">").concat(response.day1[0].maxTemp, "\xB0c</li>\n            <li>").concat(response.day2[0].date, "<img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day2[0].icon, ".png\">").concat(response.day2[0].maxTemp, "\xB0c</li>\n            <li>").concat(response.day3[0].date, "<img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day3[0].icon, ".png\">").concat(response.day3[0].maxTemp, "\xB0c</li>\n            <li>").concat(response.day4[0].date, "<img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day4[0].icon, ".png\">").concat(response.day4[0].maxTemp, "\xB0c</li>\n          </ul>\n        </div>\n        <div class=\"flex-box-forecast\">\n          <ul>\n            <li>").concat(response.day5[0].date, "<img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day5[0].icon, ".png\">").concat(response.day5[0].maxTemp, "\xB0c</li>\n            <li>").concat(response.day6[0].date, "<img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day6[0].icon, ".png\">").concat(response.day6[0].maxTemp, "\xB0c</li>\n            <li>").concat(response.day7[0].date, "<img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day7[0].icon, ".png\">").concat(response.day7[0].maxTemp, "\xB0c</li>\n            <li>").concat(response.day8[0].date, "<img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day8[0].icon, ".png\">").concat(response.day8[0].maxTemp, "\xB0c</li>\n          </ul>\n        </div>\n      </div>\n      ");
+      document.getElementById('results').innerHTML = "\n      <div class=\"main-result-flex\">\n        <div class=\"flex-box-left\">\n          <h2>".concat(response.city, ", ").concat(response.country, "</h2>\n          <p>Your trip is ").concat(daysToTrip, " ").concat(dayOrDays, " away</p>\n          <img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.currentIcon, ".png\">\n          <p class=\"temp-text\">").concat(response.currentTemp, "\xB0c</p>\n          <p>").concat(response.currentDescription, "</p>\n          <p class=\"small\">(right now)</p>\n        </div>\n        <div class=\"flex-box-right\">\n          <img id=\"destinationImage\" src=\"").concat(destImage, "\">\n        </div>\n      </div>\n      <div class=\"extra-results-flex\">\n        <div class=\"flex-box-icons\">\n          <img src=\"fab13f2ec6e368ca5122527f3862abad.png\">\n          <h3>Language</h3>\n          <p>").concat(response.language, "</p>\n        </div>\n        <div class=\"flex-box-icons\">\n          <img src=\"e23f4589e4925b2ad271820627c51173.png\">\n          <h3>Currency</h3>\n          <p>").concat(response.currency, "</p>\n        </div>\n        <div class=\"flex-box-icons\">\n          <img src=\"b5891e799634a520ab45f991f18f8678.png\">\n          <h3>Population</h3>\n          <p>").concat(new Intl.NumberFormat().format(response.population), "</p>\n        </div>\n      </div>\n      <div class=\"extra-results-flex\">\n        <div class=\"flex-box-icons\">\n          <img src=\"8603f68b267a8bab8f580bfbc2532f6a.png\">\n          <h3>Weather forecast &#8211; next 8 days</h3>\n        </div>\n      </div>\n      <div class=\"extra-results-flex\">\n        <div class=\"flex-box-forecast\">\n          <ul>\n            <li><img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day1[0].icon, ".png\"> <span class=\"temp-text\">").concat(response.day1[0].maxTemp, "\xB0c</span> &#8211; ").concat(response.day1[0].date, "</li>\n            <li><img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day2[0].icon, ".png\"> <span class=\"temp-text\">").concat(response.day2[0].maxTemp, "\xB0c</span> &#8211; ").concat(response.day2[0].date, "</li>\n            <li><img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day3[0].icon, ".png\"> <span class=\"temp-text\">").concat(response.day3[0].maxTemp, "\xB0c</span> &#8211; ").concat(response.day3[0].date, "</li>\n            <li><img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day4[0].icon, ".png\"> <span class=\"temp-text\">").concat(response.day4[0].maxTemp, "\xB0c</span> &#8211; ").concat(response.day4[0].date, "</li>\n          </ul>\n        </div>\n        <div class=\"flex-box-forecast\">\n          <ul>\n            <li><img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day5[0].icon, ".png\"> <span class=\"temp-text\">").concat(response.day5[0].maxTemp, "\xB0c</span> &#8211; ").concat(response.day5[0].date, " </li>\n            <li><img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day6[0].icon, ".png\"> <span class=\"temp-text\">").concat(response.day6[0].maxTemp, "\xB0c</span> &#8211; ").concat(response.day6[0].date, "</li>\n            <li><img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day7[0].icon, ".png\"> <span class=\"temp-text\">").concat(response.day7[0].maxTemp, "\xB0c</span> &#8211; ").concat(response.day7[0].date, " </li>\n            <li><img src=\"https://www.weatherbit.io/static/img/icons/").concat(response.day8[0].icon, ".png\"> <span class=\"temp-text\">").concat(response.day8[0].maxTemp, "\xB0c</span> &#8211; ").concat(response.day8[0].date, " </li>\n          </ul>\n        </div>\n      </div>\n      ");
     }); //.catch(error => alert("Something went wrong, please check the city and try again", error));
-  } //  else {
-  //    alert("Please enter a valid URL");
-  //    console.log("Not valid url");
-  //}
-
+  }
 } // DATE INPUT FIELD
 // creates todays date then formats it so the month and day have 2 digits and as yyyy-mm-dd
 // from todays date it calls on the addDays function to create the date in 16 days
@@ -233,6 +224,28 @@ var daysUntilTrip = function daysUntilTrip() {
 };
 
 dateRestrict();
+
+var destImagePicker = function destImagePicker(response) {
+  var cityImage = response.cityImage;
+  var countryImage = response.countryImage;
+
+  if (typeof cityImage === 'undefined') {
+    console.log("countryImage");
+    return countryImage;
+  } else {
+    console.log("cityImage");
+    return cityImage;
+  }
+};
+
+var singleOrPlural = function singleOrPlural(daysToTrip) {
+  if (daysToTrip == 1) {
+    return "day";
+  } else {
+    return "days";
+  }
+};
+
 
 
 /***/ }),
