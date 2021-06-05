@@ -43,7 +43,7 @@ function performAction(e) {
           <img src="https://www.weatherbit.io/static/img/icons/${response.currentIcon}.png">
           <p class="temp-text">${response.currentTemp}°c</p>
           <p>${response.currentDescription}</p>
-          <p class="small">(currently)</p>
+          <p class="small">(right now)</p>
         </div>
         <div class="flex-box-right">
           <img id="destinationImage" src="${destImage}">
@@ -63,30 +63,30 @@ function performAction(e) {
         <div class="flex-box-icons">
           <img src="b5891e799634a520ab45f991f18f8678.png">
           <h3>Population</h3>
-          <p>${response.population}</p>
+          <p>${new Intl.NumberFormat().format(response.population)}</p>
         </div>
       </div>
       <div class="extra-results-flex">
         <div class="flex-box-icons">
           <img src="8603f68b267a8bab8f580bfbc2532f6a.png">
-          <h3>Weather forecast</h3>
+          <h3>Weather forecast &#8211; next 8 days</h3>
         </div>
       </div>
       <div class="extra-results-flex">
         <div class="flex-box-forecast">
           <ul>
-            <li>${response.day1[0].date}<img src="https://www.weatherbit.io/static/img/icons/${response.day1[0].icon}.png">${response.day1[0].maxTemp}°c</li>
-            <li>${response.day2[0].date}<img src="https://www.weatherbit.io/static/img/icons/${response.day2[0].icon}.png">${response.day2[0].maxTemp}°c</li>
-            <li>${response.day3[0].date}<img src="https://www.weatherbit.io/static/img/icons/${response.day3[0].icon}.png">${response.day3[0].maxTemp}°c</li>
-            <li>${response.day4[0].date}<img src="https://www.weatherbit.io/static/img/icons/${response.day4[0].icon}.png">${response.day4[0].maxTemp}°c</li>
+            <li><img src="https://www.weatherbit.io/static/img/icons/${response.day1[0].icon}.png"> <span class="temp-text">${response.day1[0].maxTemp}°c</span> &#8211; ${response.day1[0].date}</li>
+            <li><img src="https://www.weatherbit.io/static/img/icons/${response.day2[0].icon}.png"> <span class="temp-text">${response.day2[0].maxTemp}°c</span> &#8211; ${response.day2[0].date}</li>
+            <li><img src="https://www.weatherbit.io/static/img/icons/${response.day3[0].icon}.png"> <span class="temp-text">${response.day3[0].maxTemp}°c</span> &#8211; ${response.day3[0].date}</li>
+            <li><img src="https://www.weatherbit.io/static/img/icons/${response.day4[0].icon}.png"> <span class="temp-text">${response.day4[0].maxTemp}°c</span> &#8211; ${response.day4[0].date}</li>
           </ul>
         </div>
         <div class="flex-box-forecast">
           <ul>
-            <li>${response.day5[0].date}<img src="https://www.weatherbit.io/static/img/icons/${response.day5[0].icon}.png">${response.day5[0].maxTemp}°c</li>
-            <li>${response.day6[0].date}<img src="https://www.weatherbit.io/static/img/icons/${response.day6[0].icon}.png">${response.day6[0].maxTemp}°c</li>
-            <li>${response.day7[0].date}<img src="https://www.weatherbit.io/static/img/icons/${response.day7[0].icon}.png">${response.day7[0].maxTemp}°c</li>
-            <li>${response.day8[0].date}<img src="https://www.weatherbit.io/static/img/icons/${response.day8[0].icon}.png">${response.day8[0].maxTemp}°c</li>
+            <li><img src="https://www.weatherbit.io/static/img/icons/${response.day5[0].icon}.png"> <span class="temp-text">${response.day5[0].maxTemp}°c</span> &#8211; ${response.day5[0].date} </li>
+            <li><img src="https://www.weatherbit.io/static/img/icons/${response.day6[0].icon}.png"> <span class="temp-text">${response.day6[0].maxTemp}°c</span> &#8211; ${response.day6[0].date}</li>
+            <li><img src="https://www.weatherbit.io/static/img/icons/${response.day7[0].icon}.png"> <span class="temp-text">${response.day7[0].maxTemp}°c</span> &#8211; ${response.day7[0].date} </li>
+            <li><img src="https://www.weatherbit.io/static/img/icons/${response.day8[0].icon}.png"> <span class="temp-text">${response.day8[0].maxTemp}°c</span> &#8211; ${response.day8[0].date} </li>
           </ul>
         </div>
       </div>
