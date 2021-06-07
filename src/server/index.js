@@ -121,7 +121,7 @@ app.post('/destination', async (request, response) => {
   try {
     response.send(destData);
   }
-  
+
   catch (error) {
     console.log("end of fetch error", error)
   }

@@ -1,13 +1,10 @@
 
 // Functions
 import { performAction } from './js/app'
-import { formChecker } from './js/formChecker'
 //import { dateRestrict } from './js/dateInput'
 
 export {
   performAction,
-  formChecker
-  //updateUI,
   //dateRestrict
 }
 
