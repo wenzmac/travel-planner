@@ -30,7 +30,8 @@ app.get('/all', function (request, response) {
 app.post('/destination', async (request, response) => {
   let destData = {};
 
-  let geoNameApiKey = process.env.GEONAME_API_KEY;
+  //let geoNameApiKey = process.env.GEONAME_API_KEY;
+  let geoNameApiKey = wenzmac
   const inputCity = request.body.destCity;
 
   // geoname fetch store info in destData
@@ -48,7 +49,8 @@ app.post('/destination', async (request, response) => {
   .catch(error => console.log("geoName fetch error", error));
 
   // weatherbit fetch store info in destData
-  let weatherApiKey = process.env.WEATHERBIT_API_KEY;
+  //let weatherApiKey = process.env.WEATHERBIT_API_KEY;
+  let weatherApiKey = 5648924cf38e4749b78edae008960acd;
   await fetch(`https://api.weatherbit.io/v2.0/current?lat=${destData.lat}&lon=${destData.long}&key=${weatherApiKey}`)
     .then(response => response.json())
     .then(response => {
@@ -82,7 +84,8 @@ app.post('/destination', async (request, response) => {
     .catch(error => console.log("weatherbit forecast fetch error", error));
 
   // pixabay fetch store info in destData
-  let pixabayApiKey = process.env.PIXABAY_API_KEY;
+  //let pixabayApiKey = process.env.PIXABAY_API_KEY;
+  let pixabayApiKey = 21842735-6a61d10b908332f54c187953f;
 
   await fetch(`https://pixabay.com/api/?key=${pixabayApiKey}&q=${destData.city}&orientation=horizontal&image_type=photo`)
     .then(response => response.json())

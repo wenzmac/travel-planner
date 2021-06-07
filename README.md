@@ -10,6 +10,12 @@ You will need access keys for the following APIs:
 - [Weatherbit](https://www.weatherbit.io/api)
 - [Pixabay](https://pixabay.com/service/about/api/)
 
+Add your API keys to a .env file in the main app folder as:
+GEONAME_API_KEY=your-api-key
+WEATHERBIT_API_KEY=your-api-key
+PIXABAY_API_KEY=your-api-key
+
+
 [REST countries](https://restcountries.eu/) is also used but no access key is required.
 
 ## Running the app
